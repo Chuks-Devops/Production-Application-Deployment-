@@ -112,7 +112,7 @@ jobs:
         with:
           context: ./nodejs
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: 1.0
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
