@@ -111,6 +111,11 @@ jobs:
             type=sha,prefix={{branch}}-
             type=raw,value=latest
 
+      
+      - name: Display the image url
+        run: echo "${{ secrets.IMAGE_NAME }}${{ github.run_id }}"
+
+        
       - name: Build Docker image
         uses: docker/build-push-action@v4
         with:
