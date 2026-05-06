@@ -117,9 +117,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       
-      - name: Push Docker image
-        run: docker push ${{ env.IMAGE_NAME }}:1.0
-
   deploy-ec2:
     name: Deploy to EC2
     runs-on: ubuntu-latest
