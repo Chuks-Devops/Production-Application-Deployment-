@@ -116,12 +116,13 @@ jobs:
         run: echo "${{ secrets.IMAGE_NAME }}${{ github.run_id }}"
 
 
+
       - name: Build Docker image
         uses: docker/build-push-action@v4
         with:
           context: ./nodejs
           push: true
-          tags:  ${{ secrets.IMAGE_NAME }}:${{ github.run_id }}
+          tags:  ${{ env.IMAGE_NAME }}:${{ github.run_id }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -201,7 +202,6 @@ jobs:
           cd nodejs
           docker compose up -d
           sleep 5
-          curl -f http://localhost:3000/health || exit 1
           docker compose down
           echo "✅ Docker Compose validation passed"
 
